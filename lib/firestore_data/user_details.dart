@@ -32,6 +32,7 @@ class _UserDetailsState extends State<UserDetails> {
     setState(() {
       details = snap.data() as Map<String, dynamic>;
     });
+    // ignore: avoid_print
     print(snap.data());
   }
 

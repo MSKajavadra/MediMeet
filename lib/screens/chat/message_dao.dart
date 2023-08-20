@@ -44,7 +44,9 @@ class MessageDao {
       'name': user2Info['name'],
       'photo': user2Info['profilePhoto']
     };
+    // ignore: avoid_print
     print(user1Data);
+    // ignore: avoid_print
     print(user2Data);
     FirebaseDatabase.instance
         .ref('users')
@@ -59,6 +61,7 @@ class MessageDao {
   }
 
   void saveMessage(Message message) {
+    // ignore: avoid_print
     print(message.toJson());
     _messageRef.push().set(message.toJson());
   }

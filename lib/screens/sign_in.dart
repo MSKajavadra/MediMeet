@@ -175,9 +175,7 @@ class _SignInState extends State<SignIn> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    elevation: 2,
-                    primary: Colors.indigo[900],
-                    onPrimary: Colors.black,
+                    foregroundColor: Colors.black, backgroundColor: Colors.indigo[900], elevation: 2,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(32.0),
                     ),
@@ -200,7 +198,24 @@ class _SignInState extends State<SignIn> {
                 style: ButtonStyle(
                     overlayColor:
                         MaterialStateProperty.all(Colors.transparent)),
-                onPressed: () {},
+                onPressed: () async {
+                  if (_emailController.text.isNotEmpty) {
+                    showLoaderDialog(context);
+                    await _auth.sendPasswordResetEmail(
+                        email: _emailController.text);
+                    const snackBar = SnackBar(
+                      content: Row(
+                        children: [
+                          Text("Reset password link send on your email.."),
+                        ],
+                      ),
+                    );
+                    // ignore: use_build_context_synchronously
+                    Navigator.pop(context);
+                    // ignore: use_build_context_synchronously
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
+                },
                 child: Text(
                   'Forgot Password?',
                   style: GoogleFonts.lato(
@@ -232,7 +247,7 @@ class _SignInState extends State<SignIn> {
                             MaterialStateProperty.all(Colors.transparent)),
                     onPressed: () => _pushPage(context, const Register()),
                     child: Text(
-                      'Signup here',
+                      'Sign up',
                       style: GoogleFonts.lato(
                         fontSize: 15,
                         color: Colors.indigo[700],
@@ -309,14 +324,16 @@ class _SignInState extends State<SignIn> {
       SharedPreferenceHelper().saveUserId(user.uid);
       // SharedPreferenceHelper().saveProfileUrl(user);
       SharedPreferenceHelper().saveUserName(basicInfo['name']);
-      SharedPreferenceHelper().saveAccountType(basicInfo['type']== 'doctor'? true :false);
+      SharedPreferenceHelper()
+          .saveAccountType(basicInfo['type'] == 'doctor' ? true : false);
 
+      // ignore: use_build_context_synchronously
       Navigator.of(context)
           .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
     } catch (e) {
-      final snackBar = SnackBar(
+      const snackBar = SnackBar(
         content: Row(
-          children: const [
+          children: [
             Icon(
               Icons.info_outline,
               color: Colors.white,
@@ -325,7 +342,9 @@ class _SignInState extends State<SignIn> {
           ],
         ),
       );
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }

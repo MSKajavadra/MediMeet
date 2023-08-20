@@ -101,9 +101,9 @@ class _UpdateUserDetailsState extends State<UpdateUserDetails> {
                   Navigator.of(context).pop(context);
                 },
                 style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.indigo.withOpacity(0.9),
                   elevation: 2,
-                  primary: Colors.indigo.withOpacity(0.9),
-                  onPrimary: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(32.0),
                   ),

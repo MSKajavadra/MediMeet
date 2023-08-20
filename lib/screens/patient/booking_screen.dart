@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unnecessary_brace_in_string_interps
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -73,6 +75,7 @@ class _BookingScreenState extends State<BookingScreen> {
       initialTime: currentTime,
     );
 
+    // ignore: use_build_context_synchronously
     MaterialLocalizations localizations = MaterialLocalizations.of(context);
     String formattedTime = localizations.formatTimeOfDay(selectedTime!,
         alwaysUse24HourFormat: false);
@@ -505,9 +508,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         width: MediaQuery.of(context).size.width,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            elevation: 2,
-                            primary: Colors.indigo,
-                            onPrimary: Colors.black,
+                            foregroundColor: Colors.black, backgroundColor: Colors.indigo, elevation: 2,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32.0),
                             ),

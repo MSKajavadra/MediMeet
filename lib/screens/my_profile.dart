@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -32,6 +34,7 @@ class _MyProfileState extends State<MyProfile> {
   String image =
       'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png';
 
+  // ignore: duplicate_ignore
   Future<void> _getUser() async {
     user = _auth.currentUser!;
 
@@ -49,6 +52,7 @@ class _MyProfileState extends State<MyProfile> {
       image = snapshot['profilePhoto'] ?? image;
       specialization = snapshot['specialization'];
     });
+    // ignore: 
     print(snap.data());
   }
 
@@ -141,8 +145,9 @@ class _MyProfileState extends State<MyProfile> {
                         ),
                         shape: BoxShape.circle),
                     child: InkWell(
-                      onTap: () {
-                        _showSelectionDialog(context);
+                      onTap: () async{
+                        await _showSelectionDialog(context);
+                        _getUser();
                       },
                       child: CircleAvatar(
                         radius: 80,

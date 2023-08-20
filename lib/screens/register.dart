@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:math';
 import 'package:health/screens/sign_in.dart';
 import 'package:health/globals.dart' as globals;
@@ -272,8 +274,7 @@ class _RegisterState extends State<Register> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                        elevation: 2,
-                        primary: Colors.grey[350],
+                        elevation: 2, backgroundColor: Colors.grey[350],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(32.0),
                         ),
@@ -312,8 +313,7 @@ class _RegisterState extends State<Register> {
                       });
                     },
                     style: ElevatedButton.styleFrom(
-                      elevation: 2,
-                      primary: Colors.grey[350],
+                      elevation: 2, backgroundColor: Colors.grey[350],
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(32.0),
                       ),
@@ -350,15 +350,13 @@ class _RegisterState extends State<Register> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    elevation: 2,
-                    primary: Colors.indigo[900],
-                    onPrimary: Colors.black,
+                    foregroundColor: Colors.black, backgroundColor: Colors.indigo[900], elevation: 2,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(32.0),
                     ),
                   ),
                   child: Text(
-                    "Sign In",
+                    "Sign Up",
                     style: GoogleFonts.lato(
                       color: Colors.white,
                       fontSize: 18.0,
@@ -498,6 +496,7 @@ class _RegisterState extends State<Register> {
       if (error.toString().compareTo(
               '[firebase_auth/email-already-in-use] The email address is already in use by another account.') ==
           0) {
+        // ignore: use_build_context_synchronously
         showAlertDialog(context);
       }
       print(error.toString());
@@ -547,6 +546,7 @@ class _RegisterState extends State<Register> {
       // sep
       FirebaseFirestore.instance.collection(accountType).doc(user.uid).set(mp);
 
+      // ignore: use_build_context_synchronously
       Navigator.of(context)
           .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
     } else {}

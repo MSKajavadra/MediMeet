@@ -24,6 +24,7 @@ class _DoctorOrPatientState extends State<DoctorOrPatient> {
     var basicInfo = snap.data() as Map<String, dynamic>;
 
     isDoctor = basicInfo['type'] == 'doctor' ? true : false;
+    // ignore: avoid_print
     print('isdoctor : $isDoctor');
     setState(() {
       _isLoading = false;

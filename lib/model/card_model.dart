@@ -4,6 +4,7 @@ import 'package:tabler_icons/tabler_icons.dart';
 class CardModel {
   String doctor;
   int cardBackground;
+  // ignore: prefer_typing_uninitialized_variables
   var cardIcon;
 
   CardModel(this.doctor, this.cardBackground, this.cardIcon);

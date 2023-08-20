@@ -18,6 +18,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
   // for making phone call
   _launchCaller(String phoneNumber) async {
     String url = "tel:$phoneNumber";
+    // ignore: deprecated_member_use
     launch(url);
   }
 
@@ -253,9 +254,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                           width: MediaQuery.of(context).size.width,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              elevation: 2,
-                              primary: Colors.indigo.withOpacity(0.9),
-                              onPrimary: Colors.black,
+                              foregroundColor: Colors.black, backgroundColor: Colors.indigo.withOpacity(0.9), elevation: 2,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(32.0),
                               ),
@@ -301,9 +300,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                               // width: MediaQuery.of(context).size.width,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  elevation: 2,
-                                  primary: Colors.indigo.withOpacity(0.9),
-                                  onPrimary: Colors.black,
+                                  foregroundColor: Colors.black, backgroundColor: Colors.indigo.withOpacity(0.9), elevation: 2,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(32.0),
                                   ),
@@ -321,9 +318,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                               // width: MediaQuery.of(context).size.width,
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    elevation: 2,
-                                    primary: Colors.indigo.withOpacity(0.9),
-                                    onPrimary: Colors.black,
+                                    foregroundColor: Colors.black, backgroundColor: Colors.indigo.withOpacity(0.9), elevation: 2,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(32.0),
                                     ),

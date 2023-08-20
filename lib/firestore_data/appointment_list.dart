@@ -90,8 +90,10 @@ class _AppointmentListState extends State<AppointmentList> {
 
   // helping in removing pending appointment
   _checkDiff(DateTime date) {
+    // ignore: avoid_print
     print(date);
     var diff = DateTime.now().difference(date).inSeconds;
+    // ignore: avoid_print
     print('date difference : $diff');
     if (diff > 0) {
       return true;

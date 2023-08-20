@@ -16,6 +16,7 @@ class _ChatsState extends State<Chats> {
   final ScrollController _scrollController = ScrollController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late User user;
+  // ignore: prefer_typing_uninitialized_variables
   late var chatDao;
 
   Future<void> _getUser() async {
@@ -38,7 +39,13 @@ class _ChatsState extends State<Chats> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(title: const Text("ChatList"),),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: const Text(
+            "ChatList",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
         body: Column(
           children: [_getChatList()],
         ),
@@ -53,6 +60,7 @@ class _ChatsState extends State<Chats> {
         query: chatDao.getChatQuery(),
         itemBuilder: (context, snapshot, animation, index) {
           final json = snapshot.value as Map<dynamic, dynamic>;
+          // ignore: prefer_interpolation_to_compose_strings, avoid_print
           print('ok:' + json.toString());
           return ChatCard(
               userId: json['uid'] ?? 'No id',
