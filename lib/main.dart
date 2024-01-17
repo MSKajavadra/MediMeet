@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/',
+      // initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => user == null ? const Skip() : const DoctorOrPatient(),
@@ -62,10 +62,6 @@ class _MyAppState extends State<MyApp> {
       },
       theme: ThemeData(brightness: Brightness.light),
       debugShowCheckedModeBanner: false,
-      // home: MainPageDoctor(),
-      // home: ChatRoom(
-      //   userId: '1234',
-      // ),
     );
   }
 }

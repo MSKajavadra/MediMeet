@@ -16,14 +16,15 @@ class _SkipState extends State<Skip> {
     return [
       PageViewModel(
         title: '',
-        image: Image.asset(
-          'assets/doc.png',
-          //fit: BoxFit.cover,
-        ),
-        //body: "Search Doctors",
         bodyWidget: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: 20),
+            Image.asset(
+              'assets/doc.png',
+              height: 300,
+            ),
+            SizedBox(height: 30),
             Text(
               'Search Doctors',
               style:
@@ -41,14 +42,16 @@ class _SkipState extends State<Skip> {
       ),
       PageViewModel(
         title: '',
-        image: Image.asset(
-          'assets/disease.png',
-          //fit: BoxFit.cover,
-        ),
-        //body: "Search Doctors",
         bodyWidget: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: 23),
+            Image.asset(
+              'assets/disease.png',
+              height: 300,
+              //fit: BoxFit.cover,
+            ),
+            SizedBox(height: 30),
             Text(
               'Search Disease',
               style:
@@ -74,26 +77,6 @@ class _SkipState extends State<Skip> {
         globalBackgroundColor: Colors.lightBlue[100],
         pages: getpages(),
         showNextButton: false,
-        showSkipButton: true,
-        skip: SizedBox(
-          width: 80,
-          height: 48,
-          child: Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            color: Colors.blue[300],
-            shadowColor: Colors.blueGrey[100],
-            elevation: 5,
-            child: Center(
-              child: Text(
-                'Skip',
-                textAlign: TextAlign.center,
-                style:
-                    GoogleFonts.lato(fontSize: 25, fontWeight: FontWeight.w900),
-              ),
-            ),
-          ),
-        ),
         done: SizedBox(
           height: 48,
           child: Card(
@@ -107,7 +90,7 @@ class _SkipState extends State<Skip> {
                 'Continue',
                 textAlign: TextAlign.center,
                 style:
-                    GoogleFonts.lato(fontSize: 15, fontWeight: FontWeight.w900),
+                    GoogleFonts.lato(fontSize: 15, fontWeight: FontWeight.w800),
               ),
             ),
           ),

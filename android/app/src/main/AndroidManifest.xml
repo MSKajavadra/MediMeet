@@ -2,7 +2,7 @@
     package="com.example.health">
     >
     <application
-        android:label="MediMeet"
+        android:label="Patient 360°"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

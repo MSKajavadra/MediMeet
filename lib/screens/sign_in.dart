@@ -24,6 +24,8 @@ class _SignInState extends State<SignIn> {
   FocusNode f2 = FocusNode();
   FocusNode f3 = FocusNode();
 
+  bool _obscurePassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +93,7 @@ class _SignInState extends State<SignIn> {
               controller: _emailController,
               decoration: InputDecoration(
                 contentPadding:
-                    const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                const EdgeInsets.only(left: 20, top: 10, bottom: 10),
                 border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(90.0)),
                   borderSide: BorderSide.none,
@@ -131,11 +133,10 @@ class _SignInState extends State<SignIn> {
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
               ),
-              //keyboardType: TextInputType.visiblePassword,
               controller: _passwordController,
               decoration: InputDecoration(
                 contentPadding:
-                    const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                const EdgeInsets.only(left: 20, top: 10, bottom: 10),
                 border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(90.0)),
                   borderSide: BorderSide.none,
@@ -148,6 +149,19 @@ class _SignInState extends State<SignIn> {
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
                 ),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _obscurePassword
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                    color: Colors.grey,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscurePassword = !_obscurePassword;
+                    });
+                  },
+                ),
               ),
               onFieldSubmitted: (value) {
                 f2.unfocus();
@@ -158,9 +172,9 @@ class _SignInState extends State<SignIn> {
                 if (value!.isEmpty) return 'Please enter the Passord';
                 return null;
               },
-              obscureText: true,
+              obscureText: _obscurePassword,
             ),
-            // sign in button
+
             Container(
               padding: const EdgeInsets.only(top: 25.0),
               child: SizedBox(
@@ -191,13 +205,13 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
             ),
-            // forget password
+
             Container(
               padding: const EdgeInsets.only(top: 15),
               child: TextButton(
                 style: ButtonStyle(
                     overlayColor:
-                        MaterialStateProperty.all(Colors.transparent)),
+                    MaterialStateProperty.all(Colors.transparent)),
                 onPressed: () async {
                   if (_emailController.text.isNotEmpty) {
                     showLoaderDialog(context);
@@ -210,9 +224,7 @@ class _SignInState extends State<SignIn> {
                         ],
                       ),
                     );
-                    // ignore: use_build_context_synchronously
                     Navigator.pop(context);
-                    // ignore: use_build_context_synchronously
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                 },
@@ -227,7 +239,6 @@ class _SignInState extends State<SignIn> {
               ),
             ),
 
-            // dont have account
             Padding(
               padding: const EdgeInsets.only(top: 18.0),
               child: Row(
@@ -244,8 +255,9 @@ class _SignInState extends State<SignIn> {
                   TextButton(
                     style: ButtonStyle(
                         overlayColor:
-                            MaterialStateProperty.all(Colors.transparent)),
-                    onPressed: () => _pushPage(context, const Register()),
+                        MaterialStateProperty.all(Colors.transparent)),
+                    onPressed:
+                    () => _pushPage(context, const Register()),
                     child: Text(
                       'Sign up',
                       style: GoogleFonts.lato(

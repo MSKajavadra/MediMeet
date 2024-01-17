@@ -77,7 +77,7 @@ class _MainPageDoctorState extends State<MainPageDoctor> {
                   ),
                   GButton(
                     icon: Typicons.calendar,
-                    text: 'All Appointments',
+                    text: 'Appointments',
                   ),
                   GButton(
                     icon: Typicons.user,
